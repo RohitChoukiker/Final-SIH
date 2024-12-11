@@ -38,10 +38,8 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
           onChange={(e) => onChange({ ...data, type: e.target.value })}
           className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
         >
-          <option value="document">Document</option>
-          <option value="package">Package</option>
-          <option value="fragile">Fragile</option>
-          <option value="perishable">Perishable</option>
+          <option value="speedpost">Speedpost (Letters/Documents)</option>
+          <option value="parcel">Parcel (Package)</option>
         </select>
       </div>
 

@@ -4,37 +4,7 @@ import { Package, MapPin } from 'lucide-react';
 import { AddressForm } from './AddressForm';
 import { ParcelDetailsForm } from './ParcelDetailsForm';
 import { useGeolocation } from '../../hooks/useGeolocation';
-// export interface ParcelFormData {
-//   senderPincode: string;
-//   parcelId: string;
-//   senderName: string;
-//   senderPhoneNumber: string;
-//   receiverName: string;
-//   receiverPhoneNumber: string;
-//   senderEmail: string;
-//   pickupAddress: string;
-//   deliveryAddress: string;
-//   receiverPincode: string;
-//   weight: string;
-//   dimensions: string;
-//   status: string;
-// }
-
-// const initialFormData: ParcelFormData = {
-//   senderPincode: '',
-//   parcelId: '',
-//   senderName: '',
-//   senderPhoneNumber: '',
-//   receiverName: '',
-//   receiverPhoneNumber: '',
-//   senderEmail: '',
-//   pickupAddress: '',
-//   deliveryAddress: '',
-//   receiverPincode: '',
-//   weight: '',
-//   dimensions: '',
-//   status: 'pre_transit',
-// };
+import ParcelService from '../../services/parcel.service';
 
 export interface ParcelFormData {
   sender: {
@@ -74,7 +44,7 @@ const initialFormData: ParcelFormData = {
     contactNumber: '',
   },
   parcel: {
-    type: 'document',
+    type: 'speedpost',
     weight: '',
     dimensions: {
       length: '',
@@ -120,8 +90,14 @@ export const AddParcelForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData); 
-    navigate('/spo-dashboard');
+    try {
+      const res = await ParcelService.createParcel(formData);
+      console.log(res);
+      navigate('/spo-dashboard');
+    } catch(e) {
+      alert("Could not post parcel");
+      console.log("Could not post parcel", e);
+    }
   };
 
   const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
@@ -134,26 +110,23 @@ export const AddParcelForm: React.FC = () => {
           {[1, 2, 3].map((step) => (
             <div
               key={step}
-              className={`flex items-center ${
-                step < 3 ? 'flex-1' : ''
-              }`}
+              className={`flex items-center ${step < 3 ? 'flex-1' : ''
+                }`}
             >
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  step <= currentStep
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${step <= currentStep
                     ? 'bg-blue-600 text-white'
                     : 'bg-gray-200 text-gray-600'
-                }`}
+                  }`}
               >
                 {step}
               </div>
               {step < 3 && (
                 <div
-                  className={`flex-1 h-1 mx-4 ${
-                    step < currentStep
+                  className={`flex-1 h-1 mx-4 ${step < currentStep
                       ? 'bg-blue-600'
                       : 'bg-gray-200'
-                  }`}
+                    }`}
                 />
               )}
             </div>
@@ -170,7 +143,7 @@ export const AddParcelForm: React.FC = () => {
         {currentStep === 1 && (
           <AddressForm
             title="Sender's Details"
-            data={formData.  sender}
+            data={formData.sender}
             onChange={(data) => setFormData(prev => ({ ...prev, sender: data }))}
             onLocationClick={handleSenderLocationClick}
           />

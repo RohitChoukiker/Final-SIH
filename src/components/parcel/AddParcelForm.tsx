@@ -22,6 +22,7 @@ export interface ParcelFormData {
   parcel: {
     type: string;
     weight: string;
+    nshPincode : string;
     dimensions: {
       length: string;
       width: string;
@@ -45,6 +46,7 @@ const initialFormData: ParcelFormData = {
   },
   parcel: {
     type: 'speedpost',
+    nshPincode:'',
     weight: '',
     dimensions: {
       length: '',

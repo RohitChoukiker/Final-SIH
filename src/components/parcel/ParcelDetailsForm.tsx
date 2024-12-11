@@ -1,9 +1,12 @@
+
+
 import React from 'react';
 
 interface ParcelDetailsFormProps {
   data: {
     type: string;
     weight: string;
+    nshPincode: string;
     dimensions: {
       length: string;
       width: string;
@@ -13,6 +16,7 @@ interface ParcelDetailsFormProps {
   onChange: (data: {
     type: string;
     weight: string;
+    nshPincode: string;
     dimensions: {
       length: string;
       width: string;
@@ -60,6 +64,19 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          Nsh-Pincode
+        </label>
+        <input
+          type="text"
+          value={data.nshPincode}
+          onChange={(e) => onChange({ ...data, nshPincode: e.target.value })}
+          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+          required
+        />
+      </div>
+
+      <div>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
           Dimensions (cm)
         </label>
         <div className="grid grid-cols-3 gap-4">
@@ -68,38 +85,47 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
               type="number"
               min="0"
               value={data.dimensions.length}
-              onChange={(e) => onChange({
-                ...data,
-                dimensions: { ...data.dimensions, length: e.target.value }
-              })}
+              onChange={(e) =>
+                onChange({
+                  ...data,
+                  dimensions: { ...data.dimensions, length: e.target.value },
+                })
+              }
               className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
               placeholder="Length"
               required
             />
           </div>
+
           <div>
             <input
               type="number"
               min="0"
               value={data.dimensions.width}
-              onChange={(e) => onChange({
-                ...data,
-                dimensions: { ...data.dimensions, width: e.target.value }
-              })}
+              onChange={(e) =>
+                onChange({
+                  ...data,
+                  dimensions: { ...data.dimensions, width: e.target.value },
+                })
+              }
               className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
               placeholder="Width"
               required
             />
           </div>
+
+        
           <div>
             <input
               type="number"
               min="0"
               value={data.dimensions.height}
-              onChange={(e) => onChange({
-                ...data,
-                dimensions: { ...data.dimensions, height: e.target.value }
-              })}
+              onChange={(e) =>
+                onChange({
+                  ...data,
+                  dimensions: { ...data.dimensions, height: e.target.value },
+                })
+              }
               className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
               placeholder="Height"
               required

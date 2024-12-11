@@ -4,8 +4,39 @@ import { Package, MapPin } from 'lucide-react';
 import { AddressForm } from './AddressForm';
 import { ParcelDetailsForm } from './ParcelDetailsForm';
 import { useGeolocation } from '../../hooks/useGeolocation';
+// export interface ParcelFormData {
+//   senderPincode: string;
+//   parcelId: string;
+//   senderName: string;
+//   senderPhoneNumber: string;
+//   receiverName: string;
+//   receiverPhoneNumber: string;
+//   senderEmail: string;
+//   pickupAddress: string;
+//   deliveryAddress: string;
+//   receiverPincode: string;
+//   weight: string;
+//   dimensions: string;
+//   status: string;
+// }
 
-interface ParcelFormData {
+// const initialFormData: ParcelFormData = {
+//   senderPincode: '',
+//   parcelId: '',
+//   senderName: '',
+//   senderPhoneNumber: '',
+//   receiverName: '',
+//   receiverPhoneNumber: '',
+//   senderEmail: '',
+//   pickupAddress: '',
+//   deliveryAddress: '',
+//   receiverPincode: '',
+//   weight: '',
+//   dimensions: '',
+//   status: 'pre_transit',
+// };
+
+export interface ParcelFormData {
   sender: {
     fullName: string;
     address: string;
@@ -89,7 +120,7 @@ export const AddParcelForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    console.log(formData); 
     navigate('/spo-dashboard');
   };
 
@@ -191,4 +222,4 @@ export const AddParcelForm: React.FC = () => {
       </form>
     </div>
   );
-};
+}

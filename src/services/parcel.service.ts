@@ -1,3 +1,4 @@
+import { ParcelFormData } from "../components/parcel/AddParcelForm";
 import { BackendService } from "./config";
 
 const ParcelService = {
@@ -6,18 +7,15 @@ const ParcelService = {
         return await BackendService.get("/parcels");
     },
 
-    
-    async getParcelsByPincode(pincode) {
+    async getParcelsByPincode(pincode: string) {
         return await BackendService.get(`/parcels/${pincode}`);
     },
 
-   
-    async createParcel(parcelData) {
+    async createParcel(parcelData: ParcelFormData) {
         return await BackendService.post("/parcels", parcelData);
     },
-
    
-    async updateParcelStatus(parcelId, status) {
+    async updateParcelStatus(parcelId: string, status: string) {
         return await BackendService.patch(`/parcels/${parcelId}`, { status });
     },
 };

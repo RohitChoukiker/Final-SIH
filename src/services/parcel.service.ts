@@ -2,6 +2,8 @@ import { ParcelFormData } from "../components/parcel/AddParcelForm";
 import { BackendService } from "./config";
 
 export interface ParcelFormServiceData {
+    parcelId?: string;
+    _id?: string;
     senderPincode: string;
     senderName: string;
     senderPhoneNumber: string;
@@ -17,12 +19,8 @@ export interface ParcelFormServiceData {
 
 const ParcelService = {
 
-    async getAllParcels() {
-        return await BackendService.get("/parcels");
-    },
-
-    async getParcelsByPincode(pincode: string) {
-        return await BackendService.get(`/parcels/${pincode}`);
+    async getAllParcels(): Promise<ParcelFormServiceData[]> {
+        return (await BackendService.get("/parcels")).data;
     },
 
     async createParcel(parcelData: ParcelFormData) {

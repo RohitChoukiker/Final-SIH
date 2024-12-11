@@ -45,16 +45,16 @@
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ParcelService, { ParcelFormServiceData } from '../services/parcel.service';
+import SourceGunnyService from '../services/gunny.service';
 
 export const SpoParcelTable = () => {
-  const [parcelData, setParcelData] = useState<ParcelFormServiceData[]>([]);
+  const [sourceGunnyData, destinationGunnyData] = useState<[]>([]);
 
   useEffect(() => {
     const fetchParcels = async () => {
       try {
-        const res = await ParcelService.getAllParcels();
-        setParcelData(res);
+        const res:any = await SourceGunnyService.getPreDispatched();
+        destinationGunnyData(res);
       } catch(e) {
         console.log("Could not fetch parcels", e);
       }
@@ -75,23 +75,23 @@ export const SpoParcelTable = () => {
         <table className="min-w-full table-auto">
           <thead className="bg-gray-800 text-white">
             <tr>
-              <th className="px-4 py-2 text-left">Parcel ID</th>
-              <th className="px-4 py-2 text-left">Origin</th>
-              <th className="px-4 py-2 text-left">Destination</th>
+              <th className="px-4 py-2 text-left">Baggage ID</th>
+              <th className="px-4 py-2 text-left">NSH</th>
+              <th className="px-4 py-2 text-left">Package Count</th>
               <th className="px-4 py-2 text-left">Weight</th>
               <th className="px-4 py-2 text-left">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {parcelData.map((parcel, index) => (
+            {sourceGunnyData.map((bag: any, index) => (
               <tr key={index} className="border-b hover:bg-gray-100">
-                <td className="px-4 py-2">{parcel.parcelId}</td>
-                <td className="px-4 py-2">{parcel.pickupAddress}</td>
-                <td className="px-4 py-2">{parcel.deliveryAddress}</td>
-                <td className="px-4 py-2">{parcel.weight}</td>
+                <td className="px-4 py-2">{bag.gunnyID}</td>
+                <td className="px-4 py-2">{bag.nsh.name}</td>
+                <td className="px-4 py-2">{bag.parcels.length}</td>
+                <td className="px-4 py-2">{bag.weight}</td>
                 <td className="px-4 py-2">
                   <button
-                    onClick={() => handleShowDetails(parcel._id || "nf")}
+                    onClick={() => handleShowDetails(bag._id || "nf")}
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                   >
                     Show Details

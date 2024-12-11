@@ -16,6 +16,7 @@ export interface ParcelFormServiceData {
     weight: string;
     dimensions: string;
     status: string;
+    type: string;
 }
 
 const ParcelService = {
@@ -26,6 +27,7 @@ const ParcelService = {
 
     async createParcel(parcelData: ParcelFormData) {
         const parcel: ParcelFormServiceData = {
+            type: parcelData.parcel.type,
             senderPincode: parcelData.sender.pinCode,
             senderName: parcelData.sender.fullName,
             senderPhoneNumber: parcelData.sender.contactNumber,

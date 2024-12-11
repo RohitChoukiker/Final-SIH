@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, MapPin } from 'lucide-react';
 import { AddressForm } from './AddressForm';
 import { ParcelDetailsForm } from './ParcelDetailsForm';
 import { useGeolocation } from '../../hooks/useGeolocation';

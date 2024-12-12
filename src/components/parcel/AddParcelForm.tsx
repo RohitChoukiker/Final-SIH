@@ -231,7 +231,11 @@ export const AddParcelForm: React.FC = () => {
             </div>
           ))}
           <button
-            onClick={() => showqr(true)}
+            onClick={async () => {
+              await OptimizationService.sendSms({ message: `Your parcel has been sent using speedpost` });
+              showqr(true)
+            }
+            }
             type="button"
             className="ml-auto px-4 py-2 text-blue-700 "
           >
@@ -239,7 +243,11 @@ export const AddParcelForm: React.FC = () => {
           </button>
 
           <button
-            onClick={() => showqr(true)}
+            onClick={async () => {
+              showqr(true)
+              await OptimizationService.sendSms({ message: "Your parcel has been sent using regular post" })
+            }
+            }
             type="button"
             className="ml-auto px-4 py-2 text-blue-700"
           >

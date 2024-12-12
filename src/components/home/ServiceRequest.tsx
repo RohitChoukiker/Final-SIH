@@ -31,7 +31,7 @@ export const ServiceRequest: React.FC = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: 'f689c157-2620-4c6b-b931-e90b7f6c5fd0', // Replace with your API key
+          access_key: 'f689c157-2620-4c6b-b931-e90b7f6c5fd0', 
           name: form.name,
           contact: form.contact,
           email: form.email,
@@ -57,7 +57,7 @@ export const ServiceRequest: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
           Full Name
         </label>
         <input
@@ -69,7 +69,7 @@ export const ServiceRequest: React.FC = () => {
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
           Contact Number
         </label>
         <input
@@ -81,7 +81,7 @@ export const ServiceRequest: React.FC = () => {
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
           Email ID
         </label>
         <input
@@ -93,7 +93,7 @@ export const ServiceRequest: React.FC = () => {
         />
       </div>
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
           Message
         </label>
         <textarea

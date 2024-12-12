@@ -185,7 +185,7 @@ export const AddParcelForm: React.FC = () => {
             <button
               type="button"
               onClick={nextStep}
-              className="ml-auto px-4 py-2 text-blue-700 text-white ext-blue-700"
+              className="ml-auto px-4 py-2 text-blue-700 "
             >
               Next
             </button>

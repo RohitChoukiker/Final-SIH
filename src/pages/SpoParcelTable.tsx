@@ -70,8 +70,12 @@ export const SpoParcelTable = () => {
   };
 
   const handleDispatch = async (id: string) => {
-    await SourceGunnyService.patchGunnyBag(id);
-    fetchParcels();
+    try {
+      await SourceGunnyService.patchGunnyBag(id);
+      fetchParcels();
+    } catch (e) {
+      alert("Bag weight should be 50kg");
+    }
   };
 
   return (
@@ -83,6 +87,7 @@ export const SpoParcelTable = () => {
               <th className="px-4 py-2 text-left">Baggage ID</th>
               <th className="px-4 py-2 text-left">NSH</th>
               <th className="px-4 py-2 text-left">Package Count</th>
+              <th className="px-4 py-2 text-left">Type</th>
               <th className="px-4 py-2 text-left">Weight</th>
               <th className="px-4 py-2 text-left">Actions</th>
             </tr>
@@ -93,6 +98,7 @@ export const SpoParcelTable = () => {
                 <td className="px-4 py-2">{bag.gunnyID}</td>
                 <td className="px-4 py-2">{bag.nsh.name}</td>
                 <td className="px-4 py-2">{bag.parcels.length}</td>
+                <td className="px-4 py-2">{bag.type}</td>
                 <td className="px-4 py-2">{bag.weight}</td>
                 <td className="px-4 py-2">
                   <button
@@ -117,4 +123,3 @@ export const SpoParcelTable = () => {
     </div>
   );
 };
-

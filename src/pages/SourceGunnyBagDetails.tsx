@@ -34,9 +34,8 @@ export const SourceGunnyBagDetails: React.FC = () => {
                             <p><strong>Parcel ID:</strong> {parcel._id}</p>
                             <p><strong>Sender Name:</strong> {parcel.senderName}</p>
                             <p><strong>Sender Phone:</strong> {parcel.senderPhoneNumber}</p>
-                            <p><strong>Sender Email:</strong> {parcel.senderEmail}</p>
                             <p><strong>Pickup Address:</strong> {parcel.pickupAddress}</p>
-                            <p><strong>Destination:</strong> {parcel.destination}</p>
+                            {/* <p><strong>Destination:</strong> {parcel.destination}</p> */}
                             <p><strong>Delivery Address:</strong> {parcel.deliveryAddress}</p>
                             <p><strong>Receiver Name:</strong> {parcel.receiverName}</p>
                             <p><strong>Receiver Phone:</strong> {parcel.receiverPhoneNumber}</p>

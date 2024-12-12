@@ -53,7 +53,7 @@ export const PostageCalculator: React.FC = () => {
     <div>
       <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
             Package Weight (kg)
           </label>
           <input
@@ -67,7 +67,7 @@ export const PostageCalculator: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
             Package Type
           </label>
           <select
@@ -82,7 +82,7 @@ export const PostageCalculator: React.FC = () => {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
               Origin PIN
             </label>
             <input
@@ -94,7 +94,7 @@ export const PostageCalculator: React.FC = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            <label className="block text-sm font-medium text-gray-700 dark:text-black-300 mb-1">
               Destination PIN
             </label>
             <input

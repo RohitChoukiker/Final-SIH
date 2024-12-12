@@ -47,18 +47,18 @@ export const LoginForm: React.FC = () => {
   return (
     <div className="bg-white dark:bg-white-900 p-8 rounded-lg shadow-2xl w-full max-w-md">
       <div className="flex justify-center mb-6">
-        <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/20">
+        {/* <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/20">
           <LogIn className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-        </div>
+        </div> */}
       </div>
       
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-black">
+      <h2 className="text-2xl font-bold mb-11 text-center text-gray-800 dark:text-black">
         Login to E-DakConnect
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-black-900 mb-1">
+          <label className="block text-sm font-medium text-gray-900 dark:text-black-900 mb-1">
             Email
           </label>
           <input
@@ -73,7 +73,7 @@ export const LoginForm: React.FC = () => {
         </div>
 
         <div className="relative">
-          <label className="block text-sm font-medium text-gray-700 dark:text-black-900 mb-1">
+          <label className="block text-sm font-medium text-gray-900 dark:text-black-900 mb-1">
             Password
           </label>
           <input

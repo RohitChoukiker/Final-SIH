@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = () => {
   };
 
   return (
-    <header className="bg-white dark:bg-blue-600 shadow-md">
+    <header className="bg-white dark:bg-blue-500 shadow-md">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <Package className="h-8 w-8 text-blue-600 dark:text-blue-400" />
@@ -26,7 +26,7 @@ export const Header: React.FC<HeaderProps> = () => {
         </Link>
         <div className="flex items-center space-x-4">
           {user && (
-            <span className="text-sm text-gray-600 dark:text-gray-300">
+            <span className="text-lg text-black-900 dark:text-black-900">
               {user.email}
             </span>
           )}

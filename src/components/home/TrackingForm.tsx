@@ -28,7 +28,7 @@ export const TrackingForm: React.FC = () => {
               type="submit"
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
             >
-              <Search size={20} />
+              <Search onClick={handleSubmit} size={20} />
             </button>
           </div>
         </form>

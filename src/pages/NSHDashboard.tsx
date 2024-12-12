@@ -106,29 +106,6 @@ import { Package, Truck, Clock } from 'lucide-react';
 import { StatsCard } from '../components/dashboard/StatsCard';
 import { ParcelTable } from '../components/dashboard/ParcelTable';
 import { Parcel } from '../types';
-import { Line, Bar } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
 const mockParcels: Parcel[] = [
   {
@@ -180,45 +157,45 @@ export const NSHDashboard: React.FC = () => {
     navigate("/InvertParcelTable", { state: { parcels: mockParcels } });
   };
 
-  // Data for graphs
-  const lineData = {
-    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
-    datasets: [
-      {
-        label: 'Received Bags',
-        data: [20, 25, 30, 35],
-        borderColor: 'rgba(54, 162, 235, 1)',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      },
-      {
-        label: 'Delivered Bags',
-        data: [5, 8, 12, 15],
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      },
-    ],
-  };
+  // // Data for graphs
+  // const lineData = {
+  //   labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+  //   datasets: [
+  //     {
+  //       label: 'Received Bags',
+  //       data: [20, 25, 30, 35],
+  //       borderColor: 'rgba(54, 162, 235, 1)',
+  //       backgroundColor: 'rgba(54, 162, 235, 0.2)',
+  //     },
+  //     {
+  //       label: 'Delivered Bags',
+  //       data: [5, 8, 12, 15],
+  //       borderColor: 'rgba(75, 192, 192, 1)',
+  //       backgroundColor: 'rgba(75, 192, 192, 0.2)',
+  //     },
+  //   ],
+  // };
 
-  const barData = {
-    labels: ['Received', 'Delivered', 'Efficiency'],
-    datasets: [
-      {
-        label: 'Stats Overview',
-        data: [25, 8, 88],
-        backgroundColor: [
-          'rgba(54, 162, 235, 0.8)',
-          'rgba(75, 192, 192, 0.8)',
-          'rgba(255, 206, 86, 0.8)'
-        ],
-        borderColor: [
-          'rgba(54, 162, 235, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(255, 206, 86, 1)'
-        ],
-        borderWidth: 1,
-      },
-    ],
-  };
+  // const barData = {
+  //   labels: ['Received', 'Delivered', 'Efficiency'],
+  //   datasets: [
+  //     {
+  //       label: 'Stats Overview',
+  //       data: [25, 8, 88],
+  //       backgroundColor: [
+  //         'rgba(54, 162, 235, 0.8)',
+  //         'rgba(75, 192, 192, 0.8)',
+  //         'rgba(255, 206, 86, 0.8)'
+  //       ],
+  //       borderColor: [
+  //         'rgba(54, 162, 235, 1)',
+  //         'rgba(75, 192, 192, 1)',
+  //         'rgba(255, 206, 86, 1)'
+  //       ],
+  //       borderWidth: 1,
+  //     },
+  //   ],
+  // };
 
   return (
     <div className="space-y-6">
@@ -254,7 +231,7 @@ export const NSHDashboard: React.FC = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <h2 className="text-xl font-semibold text-gray-900 dark:text-gray">Trend Over Time</h2>
           <Line data={lineData} options={{ responsive: true, plugins: { legend: { position: 'top' } } }} />
@@ -264,7 +241,7 @@ export const NSHDashboard: React.FC = () => {
           <h2 className="text-xl font-semibold text-gray-900 dark:text-gray">Summary Overview</h2>
           <Bar data={barData} options={{ responsive: true, plugins: { legend: { display: false } } }} />
         </div>
-      </div>
+      </div> */}
 
       <div>
         <h2 className="text-xl font-semibold text-gray-900 dark:text-red">Incoming Parcels</h2>

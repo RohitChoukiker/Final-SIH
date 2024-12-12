@@ -85,7 +85,7 @@ export const SpoParcelTable = () => {
           <thead className="bg-gray-700 text-white">
             <tr>
               <th className="px-4 py-2 text-left">Baggage ID</th>
-              <th className="px-4 py-2 text-left">NSH</th>
+              {/* <th className="px-4 py-2 text-left">NSH</th> */}
               <th className="px-4 py-2 text-left">Package Count</th>
               <th className="px-4 py-2 text-left">Type</th>
               <th className="px-4 py-2 text-left">Weight</th>
@@ -96,7 +96,7 @@ export const SpoParcelTable = () => {
             {sourceGunnyData.map((bag: any, index) => (
               <tr key={index} className="border-b hover:bg-gray-100">
                 <td className="px-4 py-2">{bag.gunnyID}</td>
-                <td className="px-4 py-2">{bag.nsh.name}</td>
+                {/* <td className="px-4 py-2">{bag.nsh.name}</td> */}
                 <td className="px-4 py-2">{bag.parcels.length}</td>
                 <td className="px-4 py-2">{bag.type}</td>
                 <td className="px-4 py-2">{bag.weight}</td>

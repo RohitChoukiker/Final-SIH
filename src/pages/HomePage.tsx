@@ -19,19 +19,12 @@ export const HomePage: React.FC = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        <h1 className="text-4xl font-bold mb-4">
           Welcome to E-DakConnect
         </h1>
-        <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
+        <p className="text-lg mb-6">
           Your Gateway to Efficient Mail and Parcel Delivery
         </p>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-lg"
-        >
-          <Truck className="h-5 w-5 mr-2" />
-          <span>Request Doorstep Pickup</span>
-        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

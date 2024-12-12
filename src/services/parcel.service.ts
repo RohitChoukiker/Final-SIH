@@ -44,6 +44,10 @@ const ParcelService = {
         return await BackendService.post("/parcels", parcel);
     },
 
+    async getParcel(id: string) {
+        return (await BackendService.get(`/parcels/${id}`)).data;
+    },
+
     async updateParcelStatus(parcelId: string, status: string) {
         return await BackendService.patch(`/parcels/${parcelId}`, { status });
     },

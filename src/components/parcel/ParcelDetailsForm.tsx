@@ -4,9 +4,11 @@ import React from 'react';
 
 interface ParcelDetailsFormProps {
   data: {
+    att: string,
+    abt: string,
+    st: string,
     type: string;
     weight: string;
-    nshPincode: string;
     dimensions: {
       length: string;
       width: string;
@@ -14,9 +16,11 @@ interface ParcelDetailsFormProps {
     };
   };
   onChange: (data: {
+    att: string,
+    abt: string,
+    st: string,
     type: string;
     weight: string;
-    nshPincode: string;
     dimensions: {
       length: string;
       width: string
@@ -64,18 +68,45 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
         />
       </div>
 
-      <div>
+      {/* <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
-          Nsh-Pincode
+          Sorting Time
         </label>
         <input
           type="text"
-          value={data.nshPincode}
-          onChange={(e) => onChange({ ...data, nshPincode: e.target.value })}
+          value={data.st}
+          onChange={(e) => onChange({ ...data, st: e.target.value })}
           className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
           required
         />
-      </div>
+      </div> */}
+{/* 
+      <div>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
+          Port Buffer Time
+        </label>
+        <input
+          type="text"
+          value={data.abt}
+          onChange={(e) => onChange({ ...data, abt: e.target.value })}
+          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
+          required
+        />
+      </div> */}
+
+
+      {/* <div>
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
+          Port Transition Time
+        </label>
+        <input
+          type="text"
+          value={data.att}
+          onChange={(e) => onChange({ ...data, att: e.target.value })}
+          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
+          required
+        />
+      </div> */}
 
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">

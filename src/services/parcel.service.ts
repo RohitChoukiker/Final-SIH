@@ -7,7 +7,6 @@ export interface ParcelFormServiceData {
     senderPincode: string;
     senderName: string;
     senderPhoneNumber: string;
-    nshPincode: string;
     receiverName: string;
     receiverPhoneNumber: string;
     pickupAddress: string;
@@ -31,7 +30,6 @@ const ParcelService = {
             senderPincode: parcelData.sender.pinCode,
             senderName: parcelData.sender.fullName,
             senderPhoneNumber: parcelData.sender.contactNumber,
-            nshPincode: parcelData.parcel.nshPincode,
             receiverName: parcelData.receiver.fullName,
             receiverPhoneNumber: parcelData.receiver.contactNumber,
             pickupAddress: parcelData.sender.address,

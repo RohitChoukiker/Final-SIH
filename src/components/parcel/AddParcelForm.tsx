@@ -4,8 +4,12 @@ import { AddressForm } from "./AddressForm";
 import { ParcelDetailsForm } from "./ParcelDetailsForm";
 import { useGeolocation } from "../../hooks/useGeolocation";
 import ParcelService from "../../services/parcel.service";
+import OptimizationService from "../../services/optimization.service";
 
 export interface ParcelFormData {
+  st?: string;
+  att?: string;
+  abt?: string;
   sender: {
     fullName: string;
     address: string;
@@ -21,7 +25,6 @@ export interface ParcelFormData {
   parcel: {
     type: string;
     weight: string;
-    nshPincode: string;
     dimensions: {
       length: string;
       width: string;
@@ -31,6 +34,9 @@ export interface ParcelFormData {
 }
 
 const initialFormData: ParcelFormData = {
+  st: "35",
+  att: "2",
+  abt: "1",
   sender: {
     fullName: "",
     address: "",
@@ -45,7 +51,6 @@ const initialFormData: ParcelFormData = {
   },
   parcel: {
     type: "speedpost",
-    nshPincode: "",
     weight: "",
     dimensions: {
       length: "",
@@ -60,7 +65,9 @@ export const AddParcelForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const navigate = useNavigate();
   const { getCurrentLocation } = useGeolocation();
-
+  const [rres, setRees] = useState<any>();
+  const [qr, showqr] = useState(false);
+  ``
   const handleSenderLocationClick = async () => {
     const location = await getCurrentLocation();
     if (location) {
@@ -94,10 +101,20 @@ export const AddParcelForm: React.FC = () => {
     try {
       const res = await ParcelService.createParcel(formData);
       console.log(res);
-      navigate("/spo-dashboard");
+      const path_data = {
+        st: "3",
+        att: "2",
+        abt: "2",
+        s_pin: formData.sender.pinCode,
+        d_pin: formData.receiver.pinCode,
+      };
+      console.log(path_data);
+      const res2 = await OptimizationService.getpath(path_data);
+      console.log(res2);
+      setRees(res2);
+      // navigate("/spo-dashboard");
     } catch (e) {
-      alert("Could not post parcel");
-      console.log("Could not post parcel", e);
+      console.log(e);
     }
   };
 
@@ -114,19 +131,17 @@ export const AddParcelForm: React.FC = () => {
               className={`flex items-center ${step < 3 ? "flex-1" : ""}`}
             >
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                  step <= currentStep
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200 text-gray-600"
-                }`}
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${step <= currentStep
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-600"
+                  }`}
               >
                 {step}
               </div>
               {step < 3 && (
                 <div
-                  className={`flex-1 h-1 mx-4 ${
-                    step < currentStep ? "bg-blue-600" : "bg-gray-200"
-                  }`}
+                  className={`flex-1 h-1 mx-4 ${step < currentStep ? "bg-blue-600" : "bg-gray-200"
+                    }`}
                 />
               )}
             </div>
@@ -199,6 +214,44 @@ export const AddParcelForm: React.FC = () => {
           )}
         </div>
       </form>
+      {rres ? (
+        <div className="p-4 bg-gray-100 rounded-lg border border-gray-300">
+          <h3 className="text-lg font-semibold mb-2">Parcel Details:</h3>
+          {rres.map((item: any, index: any) => (
+            <div key={index} className="mb-4">
+              <p><strong>Arrival:</strong> {new Date(item.arrival).toLocaleString()}</p>
+              <p><strong>Departure:</strong> {new Date(item.departure).toLocaleString()}</p>
+              <p><strong>Day:</strong> {item.data.Day}</p>
+              <p><strong>Departure Time:</strong> {item.data["Departure Time"]}</p>
+              <p><strong>Destination:</strong> {item.data.Destination}</p>
+              <p><strong>Airline Name:</strong> {item.data.Name}</p>
+              <p><strong>Flight Number:</strong> {item.data["Number "]}</p>
+              <p><strong>Origin:</strong> {item.data.Origin}</p>
+              <p><strong>Weight (w):</strong> {item.w.toFixed(2)}</p>
+            </div>
+          ))}
+          <button
+            onClick={() => showqr(true)}
+            type="button"
+            className="ml-auto px-4 py-2 text-blue-700 "
+          >
+            Speedpost
+          </button>
+
+          <button
+            onClick={() => showqr(true)}
+            type="button"
+            className="ml-auto px-4 py-2 text-blue-700"
+          >
+            Regular Post
+          </button>
+          {qr ?
+            <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-loSNj_1Rplc-oOn_5mZZrcSzFRvHsrvfiw&s">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-loSNj_1Rplc-oOn_5mZZrcSzFRvHsrvfiw&s" alt="rr" />
+            </a>
+            : undefined}
+        </div>
+      ) : null}
     </div>
   );
 };

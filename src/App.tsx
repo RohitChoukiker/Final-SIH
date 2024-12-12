@@ -15,6 +15,7 @@ import {RouteMap }from './components/dashboard/RouteMap';
 import {InvertParcelTable} from "./components/dashboard/InwardParcelTable"
 import { useAuth } from './contexts/AuthContext';
 import { ParcelDetails } from './pages/ParcelDetails';
+import { SourceGunnyBagDetails } from "./pages/SourceGunnyBagDetails";
 
 // Wrapper component to handle root route redirection
 const RootRedirect: React.FC = () => {
@@ -107,7 +108,7 @@ function App() {
               {/* <Route path="/InvertParcelTable" element={<InvertParcelTable />} /> */}
               <Route path="/InvertParcelTable" element={<InvertParcelTable />} />
               <Route path="/parcel-details/:id" element={<ParcelDetails />} />
-
+              <Route path="/source-gunny-bag-details/:id" element={<SourceGunnyBagDetails />} />
               
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

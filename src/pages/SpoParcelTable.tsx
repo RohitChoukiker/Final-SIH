@@ -66,7 +66,7 @@ export const SpoParcelTable = () => {
   const navigate = useNavigate();
 
   const handleShowDetails = (id: string) => {
-    navigate(`/parcel-details/${id}`);
+    navigate(`/source-gunny-bag-details/${id}`);
   };
 
   return (

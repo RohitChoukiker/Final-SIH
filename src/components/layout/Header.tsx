@@ -8,7 +8,7 @@ interface HeaderProps {
   toggleTheme: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
+export const Header: React.FC<HeaderProps> = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
   };
 
   return (
-    <header className="bg-white dark:bg-gray-800 shadow-md">
+    <header className="bg-white dark:bg-blue-600 shadow-md">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center space-x-2">
           <Package className="h-8 w-8 text-blue-600 dark:text-blue-400" />
@@ -30,20 +30,11 @@ export const Header: React.FC<HeaderProps> = ({ isDark, toggleTheme }) => {
               {user.email}
             </span>
           )}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
-          >
-            {isDark ? (
-              <Sun className="h-5 w-5 text-yellow-500" />
-            ) : (
-              <Moon className="h-5 w-5 text-gray-600" />
-            )}
-          </button>
+          
           {user && (
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-1 text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400"
+              className="flex items-center space-x-1 text-black-600 dark:text-black-300 text-lg-500	"
             >
               <LogOut className="h-5 w-5" />
               <span>Logout</span>

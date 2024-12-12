@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { AddressForm } from './AddressForm';
-import { ParcelDetailsForm } from './ParcelDetailsForm';
-import { useGeolocation } from '../../hooks/useGeolocation';
-import ParcelService from '../../services/parcel.service';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AddressForm } from "./AddressForm";
+import { ParcelDetailsForm } from "./ParcelDetailsForm";
+import { useGeolocation } from "../../hooks/useGeolocation";
+import ParcelService from "../../services/parcel.service";
 
 export interface ParcelFormData {
   sender: {
@@ -21,7 +21,7 @@ export interface ParcelFormData {
   parcel: {
     type: string;
     weight: string;
-    nshPincode : string;
+    nshPincode: string;
     dimensions: {
       length: string;
       width: string;
@@ -32,25 +32,25 @@ export interface ParcelFormData {
 
 const initialFormData: ParcelFormData = {
   sender: {
-    fullName: '',
-    address: '',
-    pinCode: '',
-    contactNumber: '',
+    fullName: "",
+    address: "",
+    pinCode: "",
+    contactNumber: "",
   },
   receiver: {
-    fullName: '',
-    address: '',
-    pinCode: '',
-    contactNumber: '',
+    fullName: "",
+    address: "",
+    pinCode: "",
+    contactNumber: "",
   },
   parcel: {
-    type: 'speedpost',
-    nshPincode:'',
-    weight: '',
+    type: "speedpost",
+    nshPincode: "",
+    weight: "",
     dimensions: {
-      length: '',
-      width: '',
-      height: '',
+      length: "",
+      width: "",
+      height: "",
     },
   },
 };
@@ -64,7 +64,7 @@ export const AddParcelForm: React.FC = () => {
   const handleSenderLocationClick = async () => {
     const location = await getCurrentLocation();
     if (location) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         sender: {
           ...prev.sender,
@@ -78,7 +78,7 @@ export const AddParcelForm: React.FC = () => {
   const handleReceiverLocationClick = async () => {
     const location = await getCurrentLocation();
     if (location) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         receiver: {
           ...prev.receiver,
@@ -94,49 +94,48 @@ export const AddParcelForm: React.FC = () => {
     try {
       const res = await ParcelService.createParcel(formData);
       console.log(res);
-      navigate('/spo-dashboard');
-    } catch(e) {
+      navigate("/spo-dashboard");
+    } catch (e) {
       alert("Could not post parcel");
       console.log("Could not post parcel", e);
     }
   };
 
-  const nextStep = () => setCurrentStep(prev => Math.min(prev + 1, 3));
-  const prevStep = () => setCurrentStep(prev => Math.max(prev - 1, 1));
+  const nextStep = () => setCurrentStep((prev) => Math.min(prev + 1, 3));
+  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+    <div className="bg-white dark:bg-white-100 rounded-lg shadow-2xl p-6">
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
           {[1, 2, 3].map((step) => (
             <div
               key={step}
-              className={`flex items-center ${step < 3 ? 'flex-1' : ''
-                }`}
+              className={`flex items-center ${step < 3 ? "flex-1" : ""}`}
             >
               <div
-                className={`w-8 h-8 rounded-full flex items-center justify-center ${step <= currentStep
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-200 text-gray-600'
-                  }`}
+                className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                  step <= currentStep
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-200 text-gray-600"
+                }`}
               >
                 {step}
               </div>
               {step < 3 && (
                 <div
-                  className={`flex-1 h-1 mx-4 ${step < currentStep
-                      ? 'bg-blue-600'
-                      : 'bg-gray-200'
-                    }`}
+                  className={`flex-1 h-1 mx-4 ${
+                    step < currentStep ? "bg-blue-600" : "bg-gray-200"
+                  }`}
                 />
               )}
             </div>
           ))}
         </div>
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Sender Details</span>
-          <span className="text-gray-600">Parcel Details</span>
-          <span className="text-gray-600">Receiver Details</span>
+          <span className="text-black-900">Sender Details</span>
+          <span className="text-black-900">Parcel Details</span>
+          <span className="text-black-900">Receiver Details</span>
         </div>
       </div>
 
@@ -145,7 +144,9 @@ export const AddParcelForm: React.FC = () => {
           <AddressForm
             title="Sender's Details"
             data={formData.sender}
-            onChange={(data) => setFormData(prev => ({ ...prev, sender: data }))}
+            onChange={(data) =>
+              setFormData((prev) => ({ ...prev, sender: data }))
+            }
             onLocationClick={handleSenderLocationClick}
           />
         )}
@@ -153,7 +154,9 @@ export const AddParcelForm: React.FC = () => {
         {currentStep === 2 && (
           <ParcelDetailsForm
             data={formData.parcel}
-            onChange={(data) => setFormData(prev => ({ ...prev, parcel: data }))}
+            onChange={(data) =>
+              setFormData((prev) => ({ ...prev, parcel: data }))
+            }
           />
         )}
 
@@ -161,7 +164,9 @@ export const AddParcelForm: React.FC = () => {
           <AddressForm
             title="Receiver's Details"
             data={formData.receiver}
-            onChange={(data) => setFormData(prev => ({ ...prev, receiver: data }))}
+            onChange={(data) =>
+              setFormData((prev) => ({ ...prev, receiver: data }))
+            }
             onLocationClick={handleReceiverLocationClick}
           />
         )}
@@ -180,14 +185,14 @@ export const AddParcelForm: React.FC = () => {
             <button
               type="button"
               onClick={nextStep}
-              className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="ml-auto px-4 py-2 text-blue-700 text-white ext-blue-700"
             >
               Next
             </button>
           ) : (
             <button
               type="submit"
-              className="ml-auto px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+              className="ml-auto px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-700"
             >
               Add Parcel
             </button>
@@ -196,4 +201,4 @@ export const AddParcelForm: React.FC = () => {
       </form>
     </div>
   );
-}
+};

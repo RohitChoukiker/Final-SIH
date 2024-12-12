@@ -13,9 +13,9 @@ interface StatsCardProps {
 
 export const StatsCard: React.FC<StatsCardProps> = ({ title, value, icon: Icon, trend }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+    <div className="bg-white dark:bg-blue-1800 p-6 rounded-lg shadow-2xl" >
       <div className="flex items-center justify-between mb-4">
-        <div className="bg-blue-100 dark:bg-blue-900/20 p-3 rounded-lg">
+        <div className="bg-blue-100 dark:bg-white-900/20 p-3 rounded-lg">
           <Icon className="h-6 w-6 text-blue-600 dark:text-blue-400" />
         </div>
         {trend && (

@@ -45,27 +45,27 @@ export const LoginForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
+    <div className="bg-white dark:bg-white-900 p-8 rounded-lg shadow-2xl w-full max-w-md">
       <div className="flex justify-center mb-6">
         <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-900/20">
           <LogIn className="h-8 w-8 text-blue-600 dark:text-blue-400" />
         </div>
       </div>
       
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-white">
+      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800 dark:text-black">
         Login to E-DakConnect
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-gray-700 dark:text-black-900 mb-1">
             Email
           </label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-white-600 dark:text-black shadow-xl"
             placeholder="Enter your email"
             disabled={isLoading}
             required
@@ -73,14 +73,14 @@ export const LoginForm: React.FC = () => {
         </div>
 
         <div className="relative">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-sm font-medium text-gray-700 dark:text-black-900 mb-1">
             Password
           </label>
           <input
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+            className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-white-600 dark:text-black shadow-xl"
             placeholder="Enter your password"
             disabled={isLoading}
             required

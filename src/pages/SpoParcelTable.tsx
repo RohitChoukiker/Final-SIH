@@ -73,7 +73,7 @@ export const SpoParcelTable = () => {
     <div className="container mx-auto p-6">
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full table-auto">
-          <thead className="bg-gray-800 text-white">
+          <thead className="bg-gray-700 text-white">
             <tr>
               <th className="px-4 py-2 text-left">Baggage ID</th>
               <th className="px-4 py-2 text-left">NSH</th>

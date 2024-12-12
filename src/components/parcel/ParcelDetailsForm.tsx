@@ -19,7 +19,7 @@ interface ParcelDetailsFormProps {
     nshPincode: string;
     dimensions: {
       length: string;
-      width: string;
+      width: string
       height: string;
     };
   }) => void;
@@ -31,24 +31,26 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
 }) => {
   return (
     <div className="space-y-4">
-      <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Parcel Details</h3>
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-black">Parcel Details</h3>
       
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
           Parcel Type
         </label>
         <select
           value={data.type}
           onChange={(e) => onChange({ ...data, type: e.target.value })}
-          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-900 dark:border-gray-600"
         >
           <option value="speedpost">Speedpost (Letters/Documents)</option>
           <option value="parcel">Parcel (Package)</option>
         </select>
       </div>
 
+    
+
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
           Weight (kg)
         </label>
         <input
@@ -57,26 +59,26 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
           min="0"
           value={data.weight}
           onChange={(e) => onChange({ ...data, weight: e.target.value })}
-          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
           required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
           Nsh-Pincode
         </label>
         <input
           type="text"
           value={data.nshPincode}
           onChange={(e) => onChange({ ...data, nshPincode: e.target.value })}
-          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+          className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
           required
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-sm font-medium text-gray-700 dark:text-gray-900 mb-1">
           Dimensions (cm)
         </label>
         <div className="grid grid-cols-3 gap-4">
@@ -91,7 +93,7 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
                   dimensions: { ...data.dimensions, length: e.target.value },
                 })
               }
-              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
               placeholder="Length"
               required
             />
@@ -108,7 +110,7 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
                   dimensions: { ...data.dimensions, width: e.target.value },
                 })
               }
-              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
               placeholder="Width"
               required
             />
@@ -126,7 +128,7 @@ export const ParcelDetailsForm: React.FC<ParcelDetailsFormProps> = ({
                   dimensions: { ...data.dimensions, height: e.target.value },
                 })
               }
-              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600"
+              className="w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 dark:bg-white-700 dark:border-gray-600"
               placeholder="Height"
               required
             />

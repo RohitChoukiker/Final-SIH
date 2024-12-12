@@ -15,7 +15,7 @@ export const SPODashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">SPO Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-black">SPO Dashboard</h1>
         <button
           onClick={() => navigate('/add-parcel')}
           className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
@@ -48,10 +48,7 @@ export const SPODashboard: React.FC = () => {
 
 
       <div className="grid ">
-        {/* <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Pending Parcels</h2>
-          <SpoParcelTable/>
-        </div> */}
+       
         <SpoParcelTable/>
       </div>
     </div>

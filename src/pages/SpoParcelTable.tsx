@@ -50,16 +50,16 @@ import SourceGunnyService from '../services/gunny.service';
 export const SpoParcelTable = () => {
   const [sourceGunnyData, destinationGunnyData] = useState<[]>([]);
 
-  useEffect(() => {
-    const fetchParcels = async () => {
-      try {
-        const res:any = await SourceGunnyService.getPreDispatched();
-        destinationGunnyData(res);
-      } catch(e) {
-        console.log("Could not fetch parcels", e);
-      }
-    };
+  const fetchParcels = async () => {
+    try {
+      const res: any = await SourceGunnyService.getPreDispatched();
+      destinationGunnyData(res);
+    } catch (e) {
+      console.log("Could not fetch parcels", e);
+    }
+  };
 
+  useEffect(() => {
     fetchParcels();
   }, []);
 
@@ -67,6 +67,11 @@ export const SpoParcelTable = () => {
 
   const handleShowDetails = (id: string) => {
     navigate(`/source-gunny-bag-details/${id}`);
+  };
+
+  const handleDispatch = async (id: string) => {
+    await SourceGunnyService.patchGunnyBag(id);
+    fetchParcels();
   };
 
   return (
@@ -95,6 +100,13 @@ export const SpoParcelTable = () => {
                     className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
                   >
                     Show Details
+                  </button>
+
+                  <button
+                    onClick={() => handleDispatch(bag._id || "nf")}
+                    className="ml-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                  >
+                    Dispatch
                   </button>
                 </td>
               </tr>

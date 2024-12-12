@@ -26,6 +26,8 @@ export const SourceGunnyBagDetails: React.FC = () => {
                     <p><strong>NSH:</strong> {bag.nsh.name}</p>
                     <p><strong>Package Count:</strong> {bag.parcels.length}</p>
                     <p><strong>Weight:</strong> {bag.weight}</p>
+                    <p><strong>Status:</strong> {bag.status}</p>
+                    <p><strong>Type:</strong> {bag.type}</p>
                     <h2 className="text-xl font-bold mt-4">Parcels:</h2>
                     {bag.parcels.map((parcel: any, index: number) => (
                         <div key={index} className="border-b py-2">
